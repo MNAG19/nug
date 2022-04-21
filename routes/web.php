@@ -43,7 +43,15 @@ Route::get('/dosen/detail', function(){
 
 use App\Http\Controllers\FakultasController;
 Route::get('/fakultas', [FakultasController::class, 'index']);
-Route::get('/fakultas/detail/{id?}', [FakultasController::class, 'detail']);
+Route::get('/fakultas/detail/{id?}', [FakultasController::class, 'detail'])->name("detailfakultas");
+
+Route::get("/fakultas/insert", [FakultasController::class, "insert"]);
+
+Route::get("/fakultas/update", [FakultasController::class, "update"]);
+
+Route::get("/fakultas/insertelq", [FakultasController::class, "insertElq"]);
+
+
 
 
 
@@ -71,6 +79,12 @@ Route::get('/prodi', function(){
 use App\Http\Controllers\MahasiswaController;
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/mahasiswa/detail/{id?}', [MahasiswaController::class, 'detail']);
+
+
+use App\Http\Controllers\ProdiController;
+Route::get("/programstudi", [ProdiController::class, "index"]);
+Route::get("/programstudi/create", [ProdiController::class, "create"]);
+
 
 
 
