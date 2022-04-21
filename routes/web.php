@@ -82,8 +82,11 @@ Route::get('/mahasiswa/detail/{id?}', [MahasiswaController::class, 'detail']);
 
 
 use App\Http\Controllers\ProdiController;
-Route::get("/programstudi", [ProdiController::class, "index"]);
-Route::get("/programstudi/create", [ProdiController::class, "create"]);
+Route::get("/programstudi", [ProdiController::class, "index"])->name("programstudi.index");
+//untuk menampilkan form tampba prodi
+Route::get("/programstudi/create", [ProdiController::class, "create"])->name("programstudi.create");
+//untuk menyimpan data tmbah prodi
+Route::post("programstudi/store", [ProdiController::class, "store"])->name("programstudi.store");
 
 
 
