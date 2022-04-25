@@ -8,8 +8,8 @@ use App\Models\Programstudi;
 class ProdiController extends Controller
 {
     //Tugas : 
-    //Tampilkan data Program Studi di dalam Tabel
-    //Tampilkan tombol aksi (action) edit dan hapus
+    //1. Tampilkan data Program Studi di dalam Tabel
+    //2. Tampilkan tombol aksi (action) edit dan hapus
 
     public function index(){
         $programstudi = Programstudi::all();
