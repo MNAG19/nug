@@ -8,8 +8,8 @@ use App\Models\Programstudi;
 class ProdiController extends Controller
 {
     //Tugas:
-    //Tampilkan data prodi di dalam Tabel
-    //Tampilkan tomobol aksi edit dan hapus
+    //1.Tampilkan data prodi di dalam Tabel
+    //2.Tampilkan tomobol aksi edit dan hapus
     public function index(){
         $programstudi = Programstudi::all();
         $kampus = "Universitas Multi Data Palembang";
