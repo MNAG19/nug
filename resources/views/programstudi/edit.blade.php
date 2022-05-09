@@ -8,7 +8,7 @@
             {{ session()->get('info') }}
         </div>
     @endif
-    <form action="{{ url('programstudi/update/'. $programstudi->id) }}" method="post">
+    <form action="{{ url('programstudi/update/'. $programstudi->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method("PATCH")
         
@@ -24,6 +24,13 @@
             <label for="nama">Nama Prodi</label>
             <input type="text" name="nama" id="nama" placeholder="Masukkan Nama Program Studi" class="form-control" value="{{ old('nama') ?? $programstudi->nama_prodi}}">
             @error('nama')
+                <div class="text-danger"> {{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="foto">Foto logo</label>
+            <input type="file" name="foto" id="foto" class="form-control">
+            @error('foto')
                 <div class="text-danger"> {{ $message }}</div>
             @enderror
         </div>

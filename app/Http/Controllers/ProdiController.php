@@ -76,11 +76,18 @@ class ProdiController extends Controller
            //field dan atauran lainnya
         ]);
 
+        //ambil ekstensi file
+        $ext = $request->foto->getClientOriginalExtension();
+        // rename nama file
+        $nama_file = "foto-" . time() . "." . $ext;
+        $path = $request->foto->storeAs('public', $nama_file);
+
         //1. ambil nilai inputan form
         //2. panggil fungsi get data by id 
         $programstudi = Programstudi::find($id);
         $programstudi->nama_prodi = $request->nama; // $validation['nama']
         $programstudi->kode_prodi = $request->kode;
+        $programstudi->foto = $nama_file;
         $programstudi->save();
 
         //3. redirect ke halaman index / detail / form edit
