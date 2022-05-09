@@ -28,7 +28,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="foto">Foto logo</label>
+            <label for="foto">Logo Prodi</label>
             <input type="file" name="foto" id="foto" class="form-control">
             @error('foto')
                 <div class="text-danger"> {{ $message }}</div>
