@@ -24,6 +24,7 @@
                         <th>No</th>
                         <th>Kode</th>
                         <th>Nama Prodi</th>
+                        <th>Logo</th>
                         <th>Fakultas</th>
                         <th>Aksi</th>
                     </tr>
@@ -34,6 +35,7 @@
                             <td>{{ ++$key }}</td>
                             <td>{{ $item->kode_prodi }}</td>
                             <td>{{ $item->nama_prodi }}</td>
+                            <td> <img src="{{ asset('storage/'.$item->foto) }}" width="100px"></td>
                             <td>{{ $item->fakultas->nama }}</td>
                             <td>
                                 <a href="{{ url('/programstudi/detail/'.$item->id) }}" class="btn btn-warning">Detail</a>

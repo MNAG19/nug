@@ -32,12 +32,19 @@ class ProdiController extends Controller
            //field dan atauran lainnya
         ]);
 
+        //ambil ekstensi file
+        $ext = $request->foto->getClientOriginalExtension();
+        // rename nama file
+        $nama_file = "foto-" . time() . "." . $ext;
+        $path = $request->foto->storeAs('public', $nama_file);
+
         //1. ambil nilai inputan form
         //2. panggil fungsi insert - boleh raw / eloquent
         $programstudi = new Programstudi();
         $programstudi->nama_prodi = $request->nama; // $validation['nama']
         $programstudi->kode_prodi = $request->kode; 
         $programstudi->id_fakultas = 1;
+        $programstudi->foto = $nama_file;
         $programstudi->save();
 
         //3. redirect ke halaman index / detail / form create
