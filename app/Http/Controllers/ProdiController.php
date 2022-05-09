@@ -28,6 +28,7 @@ class ProdiController extends Controller
         //0. Lakukan Validation
         $validation = $request->validate([
            'nama' => 'required|min:5|max:20',
+           'foto' => 'required|file|image|max:5000' ,
            //field dan atauran lainnya
         ]);
 
