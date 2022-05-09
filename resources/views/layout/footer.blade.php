@@ -1,5 +1,4 @@
-<hr>
-&copy; {{ date('Y')}} - {{$kampus}}
+<hr/>
+&copy; {{ date('Y') }} - {{$kampus}} 
 </body>
-
 </html>
