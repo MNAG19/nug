@@ -28,8 +28,15 @@ class ProdiController extends Controller
         //0. Lakukan Validation
         $validation = $request->validate([
            'nama' => 'required|min:5|max:20',
+           'foto' => 'required|file|image|max:5000' ,
            //field dan atauran lainnya
         ]);
+
+        //ambil ekstensi file
+        $ext = $request->foto->getClientOriginalExtension();
+        // rename nama file
+        $nama_file = "foto-" . time() . "." . $ext;
+        $path = $request->foto->storeAs('public', $nama_file);
 
         //1. ambil nilai inputan form
         //2. panggil fungsi insert - boleh raw / eloquent
@@ -37,10 +44,67 @@ class ProdiController extends Controller
         $programstudi->nama_prodi = $request->nama; // $validation['nama']
         $programstudi->kode_prodi = $request->kode; 
         $programstudi->id_fakultas = 1;
+        $programstudi->foto = $nama_file;
         $programstudi->save();
 
         //3. redirect ke halaman index / detail / form create
         $request->session()->flash("info", "Data prodi $request->nama berhasil disimpan!");
         return redirect()->route("programstudi.create");
     }
+
+    public function show(Request $request, $id)
+    {
+        # code...
+        $programstudi = Programstudi::find($id);
+        $kampus = "Univesitas MDP";
+        return view("programstudi.view", compact('programstudi', 'kampus'));
+    }
+
+    public function edit(Request $request, $id)
+    {
+        # code...
+        $programstudi = Programstudi::find($id);
+        $kampus = "Univesitas MDP";
+        return view("programstudi.edit", compact('programstudi', 'kampus'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        //0. Lakukan Validation
+        $validation = $request->validate([
+           'nama' => 'required|min:5|max:20',
+           //field dan atauran lainnya
+        ]);
+
+        //ambil ekstensi file
+        $ext = $request->foto->getClientOriginalExtension();
+        // rename nama file
+        $nama_file = "foto-" . time() . "." . $ext;
+        $path = $request->foto->storeAs('public', $nama_file);
+
+        //1. ambil nilai inputan form
+        //2. panggil fungsi get data by id 
+        $programstudi = Programstudi::find($id);
+        $programstudi->nama_prodi = $request->nama; // $validation['nama']
+        $programstudi->kode_prodi = $request->kode;
+        $programstudi->foto = $nama_file;
+        $programstudi->save();
+
+        //3. redirect ke halaman index / detail / form edit
+        $request->session()->flash("info", "Data prodi $request->nama berhasil diupdate!");
+        return redirect()->route("programstudi.edit", [$id]);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $programstudi = Programstudi::find($id);
+        if($programstudi->id){
+            $programstudi->delete();
+        }
+        
+        $request->session()->flash("info", "Data prodi $request->nama berhasil dihapus!");
+        return redirect()->route("programstudi.index");
+    }
 }
+
+
