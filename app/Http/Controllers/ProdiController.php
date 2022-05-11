@@ -88,6 +88,7 @@ class ProdiController extends Controller
         $programstudi->nama_prodi = $request->nama; // $validation['nama']
         $programstudi->kode_prodi = $request->kode;
         $programstudi->foto = $nama_file;
+        
         $programstudi->save();
 
         //3. redirect ke halaman index / detail / form edit

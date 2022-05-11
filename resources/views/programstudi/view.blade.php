@@ -7,7 +7,8 @@
 <h1>Detail Program Studi</h1>
 ID Prodi = {{ $programstudi->id }}<br/>
 Kode Prodi = {{ $programstudi->kode_prodi }}<br/>
-Nama Prodi = {{ $programstudi->nama_prodi }}
+Nama Prodi = {{ $programstudi->nama_prodi }}<br/>
+Logo = {{ $programstudi->foto }}
 @endsection
 
 {{-- @include("layout.footer") --}}
