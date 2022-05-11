@@ -8,7 +8,7 @@
 ID Prodi = {{ $programstudi->id }}<br/>
 Kode Prodi = {{ $programstudi->kode_prodi }}<br/>
 Nama Prodi = {{ $programstudi->nama_prodi }}<br/>
-Logo = <img src="{{ asset('storage/'.$programstudi->foto) }}" width="100px">
+Logo = <img src="{{ asset('storage/'.$programstudi->foto) }}" width="220px">
 @endsection
 
 {{-- @include("layout.footer") --}}
